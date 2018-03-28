@@ -1,6 +1,6 @@
 import * as request from 'superagent'
 
-const baseUrl = 'http://localhost:4001'
+const baseUrl = 'http://localhost:4007'
 
 export const FETCHED_DETAILED_PRODUCT = 'FETCHED_DETAILED_PRODUCT'
 export const FETCHED_ALL_PRODUCTS = 'FETCHED_ALL_PRODUCTS'
