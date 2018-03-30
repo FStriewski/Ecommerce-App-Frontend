@@ -1,8 +1,8 @@
 import products from './products'
-import product from './product'
+import users from './users'
 
 
 export default {
   products,
-  product,
+  users,
 }

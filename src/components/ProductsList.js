@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 //import ProductDetails from './ProductDetails'
 import {connect} from 'react-redux'
 import {fetchAllProducts} from '../actions/fetchProduct'
-
+import { removeProduct } from '../actions/removeProduct'
 import {createProduct} from '../actions/createProduct'
 import {Link} from 'react-router-dom'
 
@@ -27,6 +27,10 @@ class ProductsList extends PureComponent {
   this.props.createProduct(product)
 }
 
+  removeProduct = (product) => {
+  this.props.removeProduct(product)
+}
+
   render() {
     const {products} = this.props
     return (
@@ -39,6 +43,7 @@ class ProductsList extends PureComponent {
               <th>#</th>
               <th>Name</th>
               <th>Price</th>
+              <th>Remove</th>
             </tr>
           </thead>
           <tbody>
@@ -48,6 +53,7 @@ class ProductsList extends PureComponent {
                 <Link to={ `/products/${product.id}` }>{product.name}</Link>
               </td>
               <td>&euro; {product.price}.00</td>
+              {/* <td><button onClick={this.removeProduct}>X</button></td> */}
             </tr>)) }
           </tbody>
 				</table>
@@ -68,4 +74,4 @@ const mapStateToProps = function (state) {
 }
 
 //const mapStateToProps = ({ products }) => ({ products })
-export default connect(mapStateToProps, { fetchAllProducts, createProduct })(ProductsList)
+export default connect(mapStateToProps, { fetchAllProducts, createProduct,removeProduct })(ProductsList)
