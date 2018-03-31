@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import SignUpForm from './SignUpForm'
-import { createUser}  from '../actions/users'
+import { createUser } from '../../actions/users'
 
 class SignUpPage extends PureComponent {
 

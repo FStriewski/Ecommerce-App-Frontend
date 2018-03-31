@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
-import LogOutPage from './LogOutPage'
+import LogOutPage from './userHandling/LogOutPage'
 import {connect} from 'react-redux'
 import {fetchAllProducts} from '../actions/fetchProduct'
 import { removeProduct } from '../actions/removeProduct'
@@ -38,7 +38,7 @@ class ProductsList extends PureComponent {
 
     return (
       <div>
-        <Link to={'/logout'} component={LogOutPage} className="logout">Log Out</Link>
+        <Link to={'/logout'} component={LogOutPage} className="logout" onClick={<Redirect to="/logout" />}>Log Out</Link>
         
         <h1>All products</h1>
 

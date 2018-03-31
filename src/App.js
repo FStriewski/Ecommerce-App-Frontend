@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import ProductsList from './components/ProductsList'
 import ProductDetails from './components/ProductDetails'
-import SignUpPage from './components/SignUpPage' 
-import LogInPage from './components/LogInPage' 
-import LogOutPage from './components/LogOutPage' 
+import SignUpPage from './components/userHandling/SignUpPage' 
+import LogInPage from './components/userHandling/LogInPage' 
+import LogOutPage from './components/userHandling/LogOutPage' 
 import Landing from './components/Landing'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 

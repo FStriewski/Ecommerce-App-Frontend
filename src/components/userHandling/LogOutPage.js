@@ -1,7 +1,9 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import {logout} from '../actions/users'
+import { logout } from '../../actions/users'
 import {Redirect} from 'react-router-dom'
+import Landing from '../Landing'
+import { Link } from 'react-router-dom'
 
 class LogoutPage extends PureComponent {
 	componentWillMount() {
@@ -9,13 +11,14 @@ class LogoutPage extends PureComponent {
 	}
 
 	render() {
-		if (!this.props.currentUser) return (
-			<Redirect to="/" />
-		)
+		// if (!this.props.currentUser) return (
+		// 	<Redirect to="/" />
+		// )
 
 		return (
 			<div>
-				<h1>Logging out...</h1>
+				<h1>Bye!...</h1>
+				<Link to={'/landing'} component={Landing} className="landing">Log In</Link>
 			</div>
 		)
 	}
