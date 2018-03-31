@@ -11,7 +11,7 @@ class LogInPage extends PureComponent {
 
 	render() {
 		if (this.props.currentUser) return (
-			<Redirect to="/" />
+			<Redirect to="/products" />
 		)
 
 		return (

@@ -7,6 +7,7 @@ export const ADD_USER = 'ADD_USER'
 
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
 export const USER_LOGIN_FAILED = 'USER_LOGIN_FAILED'
+export const USER_LOGOUT = 'USER_LOGOUT'
 
 
 const baseUrl = 'http://localhost:4009'
@@ -59,4 +60,8 @@ export const loginUser = (username, password) => (dispatch) =>
                 console.error(err)
             }
         })
+
+export const logout = () => ({
+    type: USER_LOGOUT
+})
 
