@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import SignUpForm from './SignUpForm'
-import {signup}  from '../actions/users'
+import { createUser}  from '../actions/users'
 
 class SignUpPage extends PureComponent {
 
@@ -31,4 +31,4 @@ const mapStateToProps = function (state) {
     }
 }
 
-export default connect(mapStateToProps, { createUser: signup })(SignUpPage)
+export default connect(mapStateToProps, { createUser })(SignUpPage)

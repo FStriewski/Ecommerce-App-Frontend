@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import SignUpPage from './SignUpPage'
-import LogIn from './LogIn'
+import LogInPage from './LogInPage'
 import { Link } from 'react-router-dom'
 
 
@@ -23,7 +23,7 @@ export default class Landing extends PureComponent {
         return (
             <div>
                 <h1>Welcome to the store!</h1>
-                <Link to={'/login'} component={LogIn} className="login">Log In</Link>
+                <Link to={'/login'} component={LogInPage} className="login">Log In</Link>
                 <p> Or create account here: </p>
                 <Link to={'/signup'} component={SignUpPage} className="signup">Sign Up</Link>
             </div>
