@@ -1,11 +1,12 @@
 import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
-//import ProductDetails from './ProductDetails'
+import LogOutPage from './LogOutPage'
 import {connect} from 'react-redux'
 import {fetchAllProducts} from '../actions/fetchProduct'
 import { removeProduct } from '../actions/removeProduct'
 import {createProduct} from '../actions/createProduct'
 import {Link} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 import ProductForm from './ProductForm'
 
@@ -33,8 +34,12 @@ class ProductsList extends PureComponent {
 
   render() {
     const {products} = this.props
+
+
     return (
       <div>
+        <Link to={'/logout'} component={LogOutPage} className="logout">Log Out</Link>
+        
         <h1>All products</h1>
 
         <table>
@@ -69,6 +74,7 @@ class ProductsList extends PureComponent {
 
 const mapStateToProps = function (state) {
   return {
+    currentUser: state.currentUser,
     products: state.products
   }
 }

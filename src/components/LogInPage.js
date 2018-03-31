@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import { loginUser} from '../actions/users'
-import LoginForm from './LoginForm'
+import LogInForm from './LogInForm'
 import {Redirect} from 'react-router-dom'
 
 class LogInPage extends PureComponent {
@@ -11,14 +11,14 @@ class LogInPage extends PureComponent {
 
 	render() {
 		if (this.props.currentUser) return (
-			<Redirect to="/products" />
+			<Redirect to="/" />
 		)
 
 		return (
 			<div>
 				<h1>Login</h1>
 
-				<LoginForm onSubmit={this.handleSubmit} />
+				<LogInForm onSubmit={this.handleSubmit} />
 
         { this.props.error && <span style={{color:'red'}}>{this.props.error}</span> }
 			</div>

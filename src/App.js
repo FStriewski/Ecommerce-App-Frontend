@@ -15,7 +15,7 @@ export default  class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Route exact path="/" render={ () => <Redirect to="/landing" /> } />
+          <Route exact path="/" render={() => <Redirect to="/products" /> } />
           <Route exact path="/landing" component={Landing} />
           <Route exact path="/signup" component={SignUpPage} />
           <Route exact path="/login" component={LogInPage} />

@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react'
 
-export default class LoginForm extends PureComponent {
+export default class LogInForm extends PureComponent {
 	state = {}
 
 	handleSubmit = (e) => {
