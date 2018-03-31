@@ -1,7 +1,7 @@
 
 import * as request from 'superagent'
 
-const baseUrl = 'http://localhost:4007'
+const baseUrl = 'http://localhost:4009'
 
 export const ADD_PRODUCT = 'ADD_PRODUCT'
 

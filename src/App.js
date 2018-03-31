@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import ProductsList from './components/ProductsList'
 import ProductDetails from './components/ProductDetails'
-import SignUp from './components/SignUp' 
+import SignUpPage from './components/SignUpPage' 
+import LogIn from './components/LogIn' 
+import Landing from './components/Landing'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 
@@ -12,10 +14,12 @@ export default  class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/" render={ () => <Redirect to="/landing" /> } />
+          <Route exact path="/landing" component={Landing} />
+          <Route exact path="/signup" component={SignUpPage} />
+          <Route exact path="/login" component={LogIn} />
           <Route exact path="/products" component={ProductsList} />
           <Route exact path="/products/:id" component={ProductDetails} />
-          <Route exact path="/" render={ () => <Redirect to="/products" /> } />
         </div>
       </Router>
     )
