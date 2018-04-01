@@ -7,6 +7,7 @@ import { removeProduct } from '../actions/removeProduct'
 import {createProduct} from '../actions/createProduct'
 import {Link} from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
+import { Grid, Row, Col } from 'react-bootstrap';
 
 import ProductForm from './ProductForm'
 
@@ -35,44 +36,47 @@ class ProductsList extends PureComponent {
   render() {
     const {products} = this.props
 
-
     return (
-      <div>
-        <Link to={'/logout'} component={LogOutPage} className="logout" onClick={<Redirect to="/logout" />}>Log Out</Link>
-        
-        <h1>All products</h1>
+      <div style={{ marginLeft: '15px' }}> 
+        <Grid>
+          <Row className="show-grid">
+            <Col xs={12} md={8}>    
+              <h1>All products</h1>
 
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Remove</th>
-            </tr>
-          </thead>
-          <tbody>
-            { products
-              .sort((p1, p2) => (p1.price - p2.price))
-              .map(product => (<tr key={product.id}>
-              <td>{product.id}</td>
-              <td>
-                <Link to={ `/products/${product.id}` }>{product.name}</Link>
-              </td>
-              <td>&euro; {product.price}.00</td>
-              {/* <td><button onClick={this.removeProduct}>X</button></td> */}
-            </tr>)) }
-          </tbody>
-				</table>
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  { products
+                    .sort((p1, p2) => (p1.price - p2.price))
+                    .map(product => (<tr key={product.id}>
+                      <td width="20%">{product.id}</td>
+                      <td width="40%">
+                      <Link to={ `/products/${product.id}` }>{product.name}</Link>
+                    </td>
+                    <td>&euro; {product.price}.00</td>
+                    {/* <td><button onClick={this.removeProduct}>X</button></td> */}
+                  </tr>)) }
+                </tbody>
+              </table>
+            </Col>
 
-        <h1>Create a new product</h1>
-        <ProductForm onSubmit={this.createProduct} />
+            <Col xs={6} md={4}> 
+              <h1>Create a new product</h1>
+              <ProductForm onSubmit={this.createProduct} />
+            </Col>
+          </Row>
+        </Grid>
       </div>
     )
   }
 }
-
-
 
 const mapStateToProps = function (state) {
   return {
