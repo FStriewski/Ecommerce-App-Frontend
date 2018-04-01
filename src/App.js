@@ -7,7 +7,7 @@ import LogInPage from './components/userHandling/LogInPage'
 import LogOutPage from './components/userHandling/LogOutPage' 
 import Landing from './components/Landing'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
-import TopBar from './components/materializeUI/TopBar'
+import TopBar from './components/ui/TopBar'
 
 
 
@@ -18,7 +18,7 @@ export default  class App extends Component {
         <div className="App">
           <TopBar />
           <Route exact path="/" render={() => <Redirect to="/products" /> } />
-          <Route exact path="/landing" component={Landing} />
+          {/* <Route exact path="/landing" component={Landing} /> */}
           <Route exact path="/signup" component={SignUpPage} />
           <Route exact path="/login" component={LogInPage} />
           <Route exact path="/logout" component={LogOutPage} />
