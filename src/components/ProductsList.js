@@ -52,7 +52,9 @@ class ProductsList extends PureComponent {
             </tr>
           </thead>
           <tbody>
-            { products.map(product => (<tr key={product.id}>
+            { products
+              .sort((p1, p2) => (p1.price - p2.price))
+              .map(product => (<tr key={product.id}>
               <td>{product.id}</td>
               <td>
                 <Link to={ `/products/${product.id}` }>{product.name}</Link>
@@ -74,7 +76,7 @@ class ProductsList extends PureComponent {
 
 const mapStateToProps = function (state) {
   return {
-    currentUser: state.currentUser,
+   // currentUser: state.currentUser,
     products: state.products
   }
 }

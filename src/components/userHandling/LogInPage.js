@@ -3,8 +3,13 @@ import {connect} from 'react-redux'
 import { loginUser } from '../../actions/users'
 import LogInForm from './LogInForm'
 import {Redirect} from 'react-router-dom'
+import PropTypes from 'prop-types'
+
+
 
 class LogInPage extends PureComponent {
+
+
 	handleSubmit = (data) => {
 		this.props.loginUser(data.username, data.password)
 	}
@@ -29,7 +34,7 @@ class LogInPage extends PureComponent {
 const mapStateToProps = function (state) {
 	return {
 		currentUser: state.currentUser,
-    error: state.login.error
+    	error: state.login.error
 	}
 }
 
