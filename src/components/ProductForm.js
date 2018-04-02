@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react'
+import './components.css'
 
 
 class ProductForm extends PureComponent {
@@ -23,21 +24,21 @@ class ProductForm extends PureComponent {
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<div>
-					<label htmlFor="name">Product name</label>
+					<label htmlFor="name">Product name &nbsp;</label>
 					<input name="name" id="name" value={
 						this.state.name || ''
 					} onChange={ this.handleChange } />
 				</div>
 
 				<div>
-					<label htmlFor="price">Product price</label>
+					<label htmlFor="price">Product price &nbsp;&nbsp;</label>
 					<input name="price" id="price" value={
 						Number(this.state.price) || ''
 					} onChange={ this.handleChange } />
 				</div>
 
 				<div>
-					<label htmlFor="description">Product description</label>
+					<label htmlFor="description">Description &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
 					<input name="description" id="description" value={
 						this.state.description || ''
 					} onChange={ this.handleChange } />

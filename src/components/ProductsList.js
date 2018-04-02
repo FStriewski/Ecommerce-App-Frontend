@@ -37,7 +37,7 @@ class ProductsList extends PureComponent {
     const {products} = this.props
 
     return (
-      <div style={{ marginLeft: '15px' }}> 
+      <div className="ProductsList" style={{ marginLeft: '15px' }}> 
         <Grid>
           <Row className="show-grid">
             <Col xs={12} md={8}>    
@@ -49,7 +49,6 @@ class ProductsList extends PureComponent {
                     <th>#</th>
                     <th>Name</th>
                     <th>Price</th>
-                    <th>Remove</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -60,16 +59,18 @@ class ProductsList extends PureComponent {
                       <td width="40%">
                       <Link to={ `/products/${product.id}` }>{product.name}</Link>
                     </td>
-                    <td>&euro; {product.price}.00</td>
+                      <td width="20%">&euro; {product.price}.00</td>
                     {/* <td><button onClick={this.removeProduct}>X</button></td> */}
                   </tr>)) }
                 </tbody>
               </table>
             </Col>
-
+            
             <Col xs={6} md={4}> 
+            <div className="ProductForm">
               <h1>Create a new product</h1>
               <ProductForm onSubmit={this.createProduct} />
+            </div>
             </Col>
           </Row>
         </Grid>
