@@ -61,6 +61,7 @@ class ProductsList extends PureComponent {
                     </td>
                       <td width="20%">&euro; {product.price}.00</td>
                     {/* <td><button onClick={this.removeProduct}>X</button></td> */}
+                    <td> <button onClick={() => this.removeProduct(product.id)}> X </button> </td>
                   </tr>)) }
                 </tbody>
               </table>
