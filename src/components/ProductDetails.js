@@ -2,6 +2,8 @@ import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {fetchProduct} from '../actions/fetchProduct'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+
 
 class ProductDetails extends PureComponent {
   static propTypes = {
@@ -11,6 +13,16 @@ class ProductDetails extends PureComponent {
       price: PropTypes.number.isRequired,
       description: PropTypes.string.isRequired
     })).isRequired
+  }
+
+  state = {
+    edit: false
+  }
+
+  toggleEdit = () => {
+    this.setState({
+      edit: !this.state.edit
+    })
   }
 
   componentWillMount(props) {
@@ -29,10 +41,18 @@ class ProductDetails extends PureComponent {
     return (
       <div >
         <h1>{ product.name }</h1>
+
+        {
+          !this.state.edit &&
+         <div> 
         <p>{product.price} €</p>
         <p>{product.description}</p>
         {image}
         <button >Buy this product!</button>
+          </div>
+        }
+
+        <button onClick={this.toggleEdit}> Edit </button>
       </div>
     )
   }
@@ -40,7 +60,7 @@ class ProductDetails extends PureComponent {
 
 const mapStateToProps = function (state, props) {
   return {
-    product: state.product
+    product: state.products.find(p => p.id === Number(props.match.params.id))
   }
 }
 
