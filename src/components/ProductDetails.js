@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {fetchProduct} from '../actions/fetchProduct'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import ProductForm from './ProductForm'
 
 
 class ProductDetails extends PureComponent {
@@ -40,11 +41,17 @@ class ProductDetails extends PureComponent {
 
     return (
       <div >
-        <h1>{ product.name }</h1>
+        {
+          this.state.edit &&
+          <ProductForm initialValues={product} onSubmit={null} />
+        }
 
         {
           !this.state.edit &&
-         <div> 
+          <div>
+
+        <h1>{ product.name }</h1>
+
         <p>{product.price} €</p>
         <p>{product.description}</p>
         {image}
