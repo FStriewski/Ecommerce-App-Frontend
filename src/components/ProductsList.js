@@ -29,8 +29,8 @@ class ProductsList extends PureComponent {
   this.props.createProduct(product)
 }
 
-  removeProduct = (product) => {
-  this.props.removeProduct(product)
+  removeProduct = (productId) => {
+  this.props.removeProduct(productId)
 }
 
   render() {

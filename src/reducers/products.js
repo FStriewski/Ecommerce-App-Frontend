@@ -29,10 +29,10 @@ export default function (state = [], action) {
 
       // Reducer not working correctly...sth with filter says reades:
      case REMOVE_PRODUCT:
-     return state
-    //   return {
-    //     ...state, products: state.products.filter(product => product.id !== action.payload)
-    //   }
+    console.log(state)
+    //return state
+      return  [...state.filter(id => id !== action.payload) ]
+      
       //return [...state, action.payload]
 
     default:
