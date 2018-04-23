@@ -5,11 +5,24 @@ import {connect} from 'react-redux'
 import {fetchAllProducts} from '../actions/fetchProduct'
 import { removeProduct } from '../actions/removeProduct'
 import {createProduct} from '../actions/createProduct'
-import {Link} from 'react-router-dom'
-import { Redirect } from 'react-router-dom'
-import { Grid, Row, Col } from 'react-bootstrap';
-
+import {Link, Redirect } from 'react-router-dom'
 import ProductForm from './ProductForm'
+import { withStyles } from 'material-ui/styles';
+import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
+import Paper from 'material-ui/Paper';
+import * as combine from "lodash/fp/compose"
+
+
+const styles = theme => ({
+  root: {
+    width: '100%',
+    marginTop: theme.spacing.unit * 1,
+    overflowX: 'auto',
+  },
+  table: {
+    minWidth: 700,
+  },
+});
 
 
 class ProductsList extends PureComponent {
@@ -34,56 +47,52 @@ class ProductsList extends PureComponent {
 }
 
   render() {
-    const {products} = this.props
-
+    const {products, classes} = this.props
     return (
-      <div className="ProductsList" style={{ marginLeft: '15px' }}> 
-        <Grid>
-          <Row className="show-grid">
-            <Col xs={12} md={8}>    
-              <h1>All products</h1>
+      <Paper className={classes.root}>
+        <h1>All products</h1>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
 
-              <table>
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  { products
-                    .sort((p1, p2) => (p1.price - p2.price))
-                    .map(product => (<tr key={product.id}>
-                      <td width="20%">{product.id}</td>
-                      <td width="40%">
-                      <Link to={ `/products/${product.id}` }>{product.name}</Link>
-                    </td>
-                      <td width="20%">&euro; {product.price}.00</td>
-                    <td> <button onClick={() => this.removeProduct(product.id)}> X </button> </td>
-                  </tr>)) }
-                </tbody>
-              </table>
-            </Col>
-            
-            <Col xs={6} md={4}> 
-            <div className="ProductForm">
-              <h1>Create a new product</h1>
-              <ProductForm onSubmit={this.createProduct} />
-            </div>
-            </Col>
-          </Row>
-        </Grid>
-      </div>
+              <TableCell numeric>#</TableCell>
+              <TableCell numeric>Name</TableCell>
+              <TableCell numeric>Price</TableCell>
+              <TableCell numeric>Delete</TableCell>
+
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {products
+            .sort((p1, p2) => (p2.price - p1.price))
+            .map(product => {
+              return (
+                <TableRow key={product.id}>
+                  <TableCell numeric>{product.id}</TableCell>
+                  <TableCell><Link to={`/products/${product.id}`}>{product.name}</Link></TableCell>
+                  <TableCell numeric>{product.price}.00</TableCell>
+                  <TableCell numeric> <button onClick={() => this.removeProduct(product.id)}> X </button></TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </Paper>
     )
   }
 }
 
+//  <h1>Create a new product</h1>
+//               <ProductForm onSubmit={this.createProduct} />
+
 const mapStateToProps = function (state) {
   return {
-   // currentUser: state.currentUser,
+    // currentUser: state.currentUser,
     products: state.products
   }
 }
 
-export default connect(mapStateToProps, { fetchAllProducts, createProduct,removeProduct })(ProductsList)
+export default combine(
+  withStyles(styles),
+  connect(mapStateToProps, { fetchAllProducts, createProduct, removeProduct })
+)(ProductsList)
