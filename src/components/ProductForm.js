@@ -1,9 +1,20 @@
 import React, {PureComponent} from 'react'
-import './components.css'
+import { withStyles } from 'material-ui/styles';
+import Input, { InputLabel } from 'material-ui/Input';
+import { FormControl, FormHelperText } from 'material-ui/Form';
 
+const styles = theme => ({
+	container: {
+		display: 'flex',
+		flexWrap: 'wrap',
+	},
+	formControl: {
+		margin: theme.spacing.unit,
+	},
+});
 
-class ProductForm extends PureComponent {
-	state = {}
+class ProductForm extends React.Component {
+	state = {	};
 
 	handleSubmit = (e) => {
 		e.preventDefault()
@@ -11,44 +22,45 @@ class ProductForm extends PureComponent {
 	}
 
 	handleChange = (event) => {
-    const {name, value} = event.target
+		const { name, value } = event.target
 
-    this.setState(
-		 (name === "price") 
-		 ?  { price: Number(value) } 
-		:  { [name]: value }
-	)
-  }
+		this.setState(
+			(name === "price")
+				? { price: Number(value) }
+				: { [name]: value }
+		)
+	}
 
 	render() {
-		const initialValues = this.props.initialValues ||  {}
+		const { classes } = this.props
+		const initialValues = this.props.initialValues || {}
+
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<div>
-					<label htmlFor="name">Product name &nbsp;</label>
-					<input name="name" id="name" value={
-						this.state.name || initialValues.name || ''
-					} onChange={ this.handleChange } />
-				</div>
+			<div className={classes.container}>
+				<form onSubmit={this.handleSubmit}>
+					<FormControl className={classes.formControl}>
+						<InputLabel htmlFor="product-name">Product name</InputLabel>
+						<Input id="product-name" name="name" value={this.state.name || initialValues.name || ''} onChange={this.handleChange} />
+					</FormControl>
 
-				<div>
-					<label htmlFor="price">Product price &nbsp;&nbsp;</label>
-					<input name="price" id="price" value={
-						Number(this.state.price)  || initialValues.price || ''
-					} onChange={ this.handleChange } />
-				</div>
+					<FormControl className={classes.formControl}>
+						<InputLabel htmlFor="product-price">Product price</InputLabel>
+						<Input id="product-price" name="price" value={this.state.price || initialValues.price || ''} onChange={this.handleChange} />
+					</FormControl>
 
-				<div>
-					<label htmlFor="description">Description &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
-					<input name="description" id="description" value={
-						this.state.description || initialValues.description || ''
-					} onChange={ this.handleChange } />
-				</div>
-
-				<button type="submit">Save</button>
-			</form>
-		)
+					<FormControl className={classes.formControl}>
+						<InputLabel htmlFor="product-desc">Product description</InputLabel>
+						<Input id="product-desc" name="description" value={this.state.description || initialValues.description || ''} onChange={this.handleChange} />
+					</FormControl>
+					<button type="submit">Save</button>
+				</form>
+			</div>
+		);
 	}
 }
 
-export default ProductForm
+
+export default withStyles(styles)(ProductForm);
+
+
+
