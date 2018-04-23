@@ -2,7 +2,9 @@ import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {fetchProduct} from '../actions/fetchProduct'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { updateProduct } from '../actions/updateProduct'
+// import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import ProductForm from './ProductForm'
 
 
@@ -26,6 +28,11 @@ class ProductDetails extends PureComponent {
     })
   }
 
+  updateProduct = (product) => {
+    this.props.updateProduct(this.props.match.params.id, product)
+    this.toggleEdit()
+  }
+
   componentWillMount(props) {
     this.props.fetchProduct(this.props.match.params.id)
   }
@@ -41,13 +48,14 @@ class ProductDetails extends PureComponent {
 
     return (
       <div >
+        {/* In edit mode display: */}
         {
           this.state.edit &&
-          <ProductForm initialValues={product} onSubmit={null} />
+          <ProductForm initialValues={product} onSubmit={this.updateProduct} />
         }
-
+        {/* Else display description: */}
         {
-          !this.state.edit &&
+          !this.state.edit && product &&
           <div>
 
         <h1>{ product.name }</h1>
@@ -60,6 +68,7 @@ class ProductDetails extends PureComponent {
         }
 
         <button onClick={this.toggleEdit}> Edit </button>
+        <Link to="/products">Back </Link>
       </div>
     )
   }
@@ -67,10 +76,9 @@ class ProductDetails extends PureComponent {
 
 const mapStateToProps = function (state, props) {
   return {
-   //  product: state.products.find(p => p.id === Number(props.match.params.id))
-   product: state.products
+   product: state.product
   }
 }
 
 
-export default connect(mapStateToProps, { fetchProduct })(ProductDetails)
+export default connect(mapStateToProps, { fetchProduct, updateProduct })(ProductDetails)

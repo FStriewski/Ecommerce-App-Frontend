@@ -60,7 +60,6 @@ class ProductsList extends PureComponent {
                       <Link to={ `/products/${product.id}` }>{product.name}</Link>
                     </td>
                       <td width="20%">&euro; {product.price}.00</td>
-                    {/* <td><button onClick={this.removeProduct}>X</button></td> */}
                     <td> <button onClick={() => this.removeProduct(product.id)}> X </button> </td>
                   </tr>)) }
                 </tbody>
@@ -87,5 +86,4 @@ const mapStateToProps = function (state) {
   }
 }
 
-//const mapStateToProps = ({ products }) => ({ products })
 export default connect(mapStateToProps, { fetchAllProducts, createProduct,removeProduct })(ProductsList)
