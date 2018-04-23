@@ -4,17 +4,6 @@ import { REMOVE_PRODUCT } from '../actions/removeProduct'
 
 import { UPDATE_PRODUCT } from '../actions/updateProduct'
 
-
-// export default function (state = null, action) {
-//   switch (action.type) {
-//     case FETCHED_DETAILED_PRODUCT:
-//       return action.payload
-
-//     default:
-//       return state
-//   }
-// }
-
 export default function (state = [], action) {
   switch (action.type) {
 
@@ -28,24 +17,15 @@ export default function (state = [], action) {
       return action.payload
 
     case UPDATE_PRODUCT:
-      if (action.payload.id === state.id) {
-        return action.payload
-      }
-      else return state
+      return state.map(product => {
+        if (product.id === action.payload.id) {
+          return action.payload
+        }
+        else return product
+      })
 
-      // Reducer not working correctly...sth with filter says reades:
      case REMOVE_PRODUCT:
-    console.log(state)
-    //return state
-      return  [...state.filter(id => id !== action.payload) ]
-      
-      //return [...state, action.payload]
-
-      case UPDATE_PRODUCT:
-  if (action.payload.id === state.id) {
-    return action.payload
-  }
-  else return state
+      return state.filter(product => product.id !== action.payload)
 
     default:
       return state
