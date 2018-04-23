@@ -2,7 +2,7 @@
 # Ecommerce App
  A simple app that allows you to display, add, change and remove products. 
 
-## 1. Overview:
+## 1. Functionality:
 
 ### Frontend: 
 * User authentication: Sign up, log in, log out
@@ -10,18 +10,18 @@
 
 ### Backend / Routes:
 
-#### Admin routes
+#### Admin routes:
 
 |**URI**|**VERB**|**ACTION**|
 |-------------|-----------|---------------------|
 | /users/     | GET       | Get all users       |
 | /users/:id  | GET       | Get single user     |
-| /users/     | POST      | Add user *          |
+| /users/     | POST      | Add user            |
 | /users/:id  | PUT       | Edit single user    |
 | /users/:id  | DELETE    | Delete single user  |
 
 
-#### Product routes
+#### Product routes:
 
 |**URI**|**VERB**|**ACTION**|
 |-------------|-----------|---------------------------|
