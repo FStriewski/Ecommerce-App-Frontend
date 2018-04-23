@@ -6,7 +6,7 @@
     "bootstrap": "3",
     "cors": "^2.8.4",
     "material-ui": "^1.0.0-beta.43",
-    "material-ui-icons": "^1.0.0-beta.36",
+        "@material-ui/icons": "^1.0.0-beta.42",
     "materialize": "^1.0.0",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
